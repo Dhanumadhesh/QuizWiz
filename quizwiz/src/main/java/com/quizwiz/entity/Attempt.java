@@ -5,10 +5,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"student_id", "quiz_id"}
+                )
+        }
+)
 public class Attempt {
 
     @Id

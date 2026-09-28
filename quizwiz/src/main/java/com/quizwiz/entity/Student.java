@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Student {
@@ -12,10 +14,14 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Student name is required")
     private String name;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Enter a valid email address")
     private String email;
 
+    @NotBlank(message = "Department is required")
     private String department;
 
     public Student() {
